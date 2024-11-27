@@ -12,7 +12,7 @@
         <div class="navbar">
             <ul>
                 <li> <span style="color: beige"> <a href="#"> Home     </a> <i class="fa-solid fa-house"> </i> </span> </li>
-                <li> <span style="color: beige"> <a href="#"> Add Post </a> <i class="fa-regular fa-square-plus"> </i> </span> </li>
+                <li> <span style="color: beige"> <a href="../Post/post.html"> Add Post </a> <i class="fa-regular fa-square-plus"> </i> </span> </li>
                 <li> <span style="color: beige"> <a href="./trending.html"> Trending </a> <i class="fa-solid fa-arrow-trend-up"> </i> </span> </li>
                 <li> <span style="color: beige"> <a href="./chat.html"> Chat     </a> <i class="fa-solid fa-message"> </i> </span> </li>
                 <li> <span style="color: beige"> <a href="#"> Profile  </a> <i class="fa-solid fa-user-large"> </i>
@@ -27,12 +27,63 @@
             </ul>            
         </div>
     </header>
+
+    <div class="posts-container">
+        <!-- The posts will shown here -->
+    </div>
+
     <script>
         document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('token');
     window.location.href = '../loginPage.01/index.html';
 });
+  window.onload = () => {
+    const postsContainer = document.querySelector('.posts-container');
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
 
-    </script>
+    posts.forEach((post, index) => {
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+      
+      postElement.innerHTML = `
+        <img src="${post.imageUrl}" alt="Post Image" class="post-image">
+        <h3>${post.name}</h3>
+        <p><strong>Posted on:</strong> ${post.date}</p>
+        <p>${post.description.substring(0, 100)}...</p>
+        <a href="../Post/postDetails.html?postIndex=${index}">Read more</a>
+      `;
+      
+      postsContainer.appendChild(postElement);
+    });
+  };window.onload = () => {
+    const postsContainer = document.querySelector('.posts-container');
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+    posts.forEach((post, index) => {
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+      
+      postElement.innerHTML = `
+        <img src="${post.imageUrl}" alt="Post Image" class="post-image">
+        <h3>${post.name}</h3>
+        <p><strong>Posted on:</strong> ${post.date}</p>
+        <p>${post.description.substring(0, 100)}...</p>
+        <a href="../Post/postDetails.html?postIndex=${index}">Read more</a>
+        <button class="delete-btn" data-index="${index}">Delete</button>
+      `;
+      
+      postElement.querySelector('.delete-btn').addEventListener('click', (event) => {
+        const postIndex = event.target.getAttribute('data-index');
+        posts.splice(postIndex, 1);
+        localStorage.setItem('posts', JSON.stringify(posts));
+        window.location.reload();
+      });
+
+      postsContainer.appendChild(postElement);
+    });
+};
+
+</script>
+
 </body>
 </html>
