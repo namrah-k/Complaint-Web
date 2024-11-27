@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="post.css" />
+    <title>Create Post</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <ul>
+          <li><a href="../HomePage/home.html">Home</a></li>
+          <li><a href="#">Add Post</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="form-container">
+      <form id="postForm">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="description">Description of Your complaint:</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          required
+        ></textarea
+        ><br /><br />
+
+        <label for="file">File to Upload (Image):</label>
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept="image/*"
+          required
+        /><br /><br />
+
+        <button type="submit">Post Complaint</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("postForm")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const description = document.getElementById("description").value;
+          const file = document.getElementById("file").files[0];
+
+          if (name && description && file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              const base64Image = reader.result;
+              const posts = JSON.parse(localStorage.getItem("posts")) || [];
+              const post = {
+                name: name,
+                description: description,
+                imageUrl: base64Image,
+                date: new Date().toLocaleDateString(),
+              };
+
+              posts.push(post);
+              localStorage.setItem("posts", JSON.stringify(posts));
+
+              window.location.href = "../HomePage/home.html";
+            };
+
+            reader.readAsDataURL(file);
+          } else {
+            alert("Please fill in all fields.");
+          }
+        });
+    </script>
+  </body>
+</html>
