@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Person selector: this contains buttons for user to select whether to chat as John or Jane -->
+    <div class="person-selector">
+      <button class="button person-selector-button active-person" id="Faculty-selector">Faculty</button>
+      <button class="button person-selector-button" id="Student-selector">Student</button>
+    </div>
+    <div class="chat-container">
+      <h2 class="chat-header">Faculty is chatting...</h2>
+
+      <div class="chat-messages">
+        <div class="message blue-bg">
+          <div class="message-sender">Faculty</div>
+          <div class="message-text">Staff here, is there a way we can help you ?</div>
+          <div class="message-timestamp"></div>
+        </div>
+        <div class="message gray-bg">
+          <div class="message-sender">Student</div>
+          <div class="message-text">Hi, I’m facing an issue. Could you please help me?</div>
+          <div class="message-timestamp"></div>
+        </div>
+      </div>
+
+      <form class="chat-input-form">
+        <label for="image-upload" class="camera-icon">
+          📷 
+        </label>
+        <input type="file" id="image-upload" accept="image/*" style="display: none;" />
+        <input type="text" class="chat-input" required placeholder="Type here, Faculty..." />
+        <button type="submit" class="button send-button">Send</button>
+      </form>
+      <button class="button clear-chat-button">Clear Chat</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

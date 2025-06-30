@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.createPost{
+    max-width: 500px;
+    margin: 10px auto;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+}
+
+.main-div{
+    border-top: 1px solid rgb(173, 173, 173) ;
+}
+.post-header{
+    display: flex;
+}
+
+#post-btn{
+    border: none;
+    color: #339ce3;
+    background:none;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.details{
+    border-top: 1px solid rgb(173, 173, 173) ;
+}
+
+textarea{
+    width: 90%;
+    border: none;
+    outline: none;
+}
+
+#output{
+    width: 300px;
+    border: none;
+    outline: none;
+    margin-top: 5px;
+}body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  background-color: #c8d9e6;
+  color: #c8d9e6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/* Navbar */
+.header .navbar ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  background-color: #333;
+  padding: 10px 0;
+  margin: 0;
+  width: 100%;
+}
+
+.header .navbar li a {
+  color: beige;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.header .navbar li a:hover {
+  background-color: #555;
+}
+
+/* Form container styling */
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-container textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2f4156;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Hover effect for form inputs */
+.form-container input:hover,
+.form-container textarea:hover {
+  border-color: #007bff;
+}
+
+/* Small screen responsive styling */
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .form-container button {
+    font-size: 14px;
+  }
+}

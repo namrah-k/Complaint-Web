@@ -1,0 +1,43 @@
+<!-- In Post Details (postDetails.html) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="postDetails.css" />
+    <title>Post Details</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <ul>
+          <li><a href="../HomePage/home.html">Home</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="post-details">
+      <div id="post"></div>
+    </div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const postIndex = urlParams.get("postIndex");
+
+      const posts = JSON.parse(localStorage.getItem("posts")) || [];
+      const post = posts[postIndex];
+
+      const postElement = document.getElementById("post");
+      postElement.innerHTML = `
+            <img src="${post.imageUrl}" alt="Post Image" class="post-image">
+            <h3>${post.name}</h3>
+            <p><strong>Posted on:</strong> ${post.date}</p>
+            <p>${post.description}</p>
+        `;
+    </script>
+  </body>
+</html>
