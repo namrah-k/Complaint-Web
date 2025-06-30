@@ -67,6 +67,75 @@ body {
   position: fixed;
   background-color: #2f4156;
 }
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  background-color: #c8d9e6;
+}
+
+.header {
+  background: #2f4156;
+  text-align: center;
+  height: 80px;
+}
+
+.navbar {
+  width: 85%;
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: beige;
+  text-transform: uppercase;
+  padding: 15px;
+  margin: 1px;
+}
+
+.navbar ul li::after {
+  content: "";
+  height: 3px;
+  width: 0;
+  background: beige;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+  text-align: left;
+}
+
+.navbar ul li:hover:after {
+  width: 100%;
+}
+
+.menu {
+  display: none;
+}
+
+.navbar ul li:hover .menu {
+  display: block;
+  position: fixed;
+  background-color: #2f4156;
+}
 
 /* Posts container */
 .posts-container {
